@@ -1,0 +1,15 @@
+<%= form_for([@article, @article.comments.build],:html=> {:role => "form", :class=>"form-horizontal"})  do |f| %>
+  <p class="form-group">
+    <%= f.label :commenter %>
+    <%= f.text_field :commenter ,class:"form-control", placeholder:"Enter Commenter"%>
+  </p>
+  
+  <p class="form-group">
+    <%= f.label :body %>
+	<%= f.text_area :body ,class:"form-control",:placeholder=>"Enter Comment"%>	
+  </p>
+  
+  <p class="form-group">
+    <%= f.submit %>
+  </p>
+<% end %>

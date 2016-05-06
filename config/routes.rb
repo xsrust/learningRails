@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   root 'welcome#index'
 
   namespace :api , defaults: { format: :json }, constraints: { subdomain: 'api' }, path: '/'s do
-    scope module: :v0 do
+    scope module: :v0, constraints: ApiConstraints.new(version: 0, default: true) do
 
     end
   end

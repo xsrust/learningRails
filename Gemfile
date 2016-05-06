@@ -53,6 +53,8 @@ group :development do
     gem 'ffaker'
   end
   
-  gem "devise"
+  gem "devise"  # adds security and authentification
+
+  gem 'kaminari' # adds pagination to ActiveModels  
 end
 

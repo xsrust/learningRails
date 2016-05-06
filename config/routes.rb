@@ -6,7 +6,9 @@ Rails.application.routes.draw do
   end
   root 'welcome#index'
 
-  namespace :api , defaults: { format: :json }, constraints: { subdomain: 'api' }, path: '/'s do
+#  namespace :api , defaults: { format: :json }, constraints: { subdomain: 'api' }, path: '/'s do
+#    scope module: :v0 do
 
-  end
+#    end
+#  end
 end

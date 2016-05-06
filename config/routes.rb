@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   get 'welcome/index'
 
   resources :articles do
@@ -6,9 +7,9 @@ Rails.application.routes.draw do
   end
   root 'welcome#index'
 
-  namespace :api , defaults: { format: :json }, constraints: { subdomain: 'api' }, path: '/'s do
-    scope module: :v0, constraints: ApiConstraints.new(version: 0, default: true) do
+  # namespace :api , defaults: { format: :json }, constraints: { subdomain: 'api' }, path: '/'s do
+    # scope module: :v0, constraints: ApiConstraints.new(version: 0, default: true) do
 
-    end
-  end
+    # end
+  # end
 end

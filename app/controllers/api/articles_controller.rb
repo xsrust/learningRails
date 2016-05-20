@@ -3,8 +3,8 @@ module Api
 
     private
 
-      def album_params
-        params.require(:article).permit(:title)
+      def article_params
+        params.require(:article).permit(:title,:category)
       end
 
       def query_params

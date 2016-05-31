@@ -1,7 +1,7 @@
 module Api
   class BaseController < ApplicationController
     protect_from_forgery with: :null_session
-    before_action :set_resource, only: [:destroy, :show, :update]
+    before_action :set_resource, :authenticate ,only: [:destroy, :show, :update]
     respond_to :json
 
     public
@@ -93,6 +93,24 @@ module Api
       def set_resource(resource = nil)
         resource ||= resource_class.find(params[:id])
         instance_variable_set("@#{resource_name}", resource)
+      end
+
+
+      def authenticate
+        authenticate_token || render_bad_credentials
+      end
+
+      def authenticate_token
+        authenticate_with_http_token do |token, options|
+          user = User.find_by(api_token: token)
+          session[:user_id] = user.id if user
+        end
+      end
+
+
+      def render_bad_credentials
+        self.headers['WWW-Authenticate'] = "Token realm=\"\""
+        render json: 'Bad credentials', status: 401
       end
   end
 end

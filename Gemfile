@@ -56,5 +56,7 @@ group :development do
   gem 'kaminari' # adds pagination to ActiveModels
 
   gem 'jbuilder' # build out JSON API's easily  
+
+  gem 'responders'
 end
 
